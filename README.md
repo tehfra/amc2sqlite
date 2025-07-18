@@ -7,31 +7,31 @@ Uses `sqlalchemy` and `tqdm`.
 This is basically a dry-run, it does not export anything:
 
 ```bash
-python amc_consolidated_reader.py your_database.amc
+python amc2sqlite.py your_database.amc
 ```
 
 #### Extract Embedded Images
 
 ```bash
-python amc_consolidated_reader.py your_database.amc --extract-images ./images/
+python amc2sqlite.py your_database.amc --extract-images ./images/
 ```
 
 #### Export to SQLite
 
 ```bash
-python amc_consolidated_reader.py your_database.amc --sqlite-path movies.sqlite
+python amc2sqlite.py your_database.amc --sqlite-path movies.sqlite
 ```
 
 #### Debug Mode
 
 ```bash
-python amc_consolidated_reader.py your_database.amc --debug
+python amc2sqlite.py your_database.amc --debug
 ```
 
 #### Combined Options
 
 ```bash
-python amc_consolidated_reader.py your_database.amc \
+python amc2sqlite.py your_database.amc \
     --extract-images ./images/ \
     --sqlite-path movies.sqlite \
     --debug
