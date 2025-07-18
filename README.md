@@ -1,4 +1,4 @@
-A hacky Python script for converting an Ant Movie Catalog 4.2 database to an SQLite database.
+A hacky Python script for converting an Ant Movie Catalog 4.2 database (not tested with any other version) to an SQLite database.
 It is basically made to work with just IMDb imported data. If it works with custom and extras fields, I'm not complaining. If it works for you, good, but if not, hack away.
 
 Uses `sqlalchemy` and `tqdm`.
