@@ -39,7 +39,7 @@ python amc2sqlite.py your_database.amc \
 
 #### Pattern-Based Detection
 
-The hacky part about this script. It uses pattern matching to locate movie records. Each movie record in an AMC database seems to follow a semi-consistent binary pattern:
+The hacky part about this script. It uses pattern matching to locate movie records. The start (or what I perceive to be the start) of each movie record in an AMC database seems to follow a semi-consistent binary pattern:
 
 ```
 .. .. 00 00 .. .. 00 00 .. .. 00 00 .. .. .. .. .. 00 00 00 .. .. .. .. .. .. 00 00 .. .. .. .. .. .. .. .. .. .. .. .. 00 00 00 00 01 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 .. 00 00 00
