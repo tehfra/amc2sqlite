@@ -4,6 +4,7 @@ It is basically made to work with just IMDb imported data. If it works with cust
 Uses `sqlalchemy` and `tqdm`.
 
 #### Basic Usage
+This is basically a dry-run, it does not export anything:
 
 ```bash
 python amc_consolidated_reader.py your_database.amc
