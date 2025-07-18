@@ -52,7 +52,7 @@ Where:
 
 After honing the pattern down to that particular one, it found all the 2021 movies in my database with no overmatching.
 
-Once movie positions are identified, the script extracts from pattern offsets:
+The script extracts from pattern offsets:
 
 - Movie ID: Bytes 0-1 (little-endian)
 - Date Added: Bytes 4-7 (Delphi TDateTime format)
@@ -61,7 +61,7 @@ Once movie positions are identified, the script extracts from pattern offsets:
 - Length: Bytes 24-25 (little-endian uint16)
 - Original Title Field Length: Byte 61
 
-and then starting at offset +65 from pattern position:
+and then starting at offset +65 from pattern start:
 
 - Original title (using the field length from before)
 - Translated title, director, producer, etc. (length-prefixed strings)
