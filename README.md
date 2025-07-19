@@ -1,4 +1,4 @@
-A python script for parsing Ant Movie Catalog databases, that can also export to an SQLite database.
+A python script for parsing Ant Movie Catalog databases. Can also export to an SQLite database.
 
 Uses `sqlalchemy`:
 ```bash
