@@ -873,7 +873,7 @@ def export_catalog_to_database(
     - Catalog properties/owner info
     - Movies with all fields and images
     - Custom fields and their values
-    - Movie extras without images (they are not saved in the database)
+    - Movie extras
     """
     print(f"Exporting complete catalog to SQLite: {sqlite_path}")
 
