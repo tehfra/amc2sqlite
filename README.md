@@ -19,6 +19,7 @@ python amc_parse.py your_database.amc --extract-images ./images/
 ```
 
 ### Export to SQLite
+Images are embedded.
 
 ```bash
 python amc_parse.py your_database.amc --sqlite-db movies.sqlite
