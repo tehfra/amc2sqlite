@@ -6,7 +6,7 @@ pip install sqlalchemy
 ```
 
 ### Basic Usage
-This is basically a dry-run, it does not export anything:
+This is basically a dry-run, does not export or extract anything:
 
 ```bash
 python amc_parse.py your_database.amc
