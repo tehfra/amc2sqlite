@@ -7,7 +7,6 @@ pip install sqlalchemy
 
 ### Basic Usage
 This is basically a dry-run, does not export or extract anything:
-
 ```bash
 python amc_parse.py your_database.amc
 ```
@@ -19,8 +18,7 @@ python amc_parse.py your_database.amc --extract-images ./images/
 ```
 
 ### Export to SQLite
-Images are embedded.
-
+Embeds images:
 ```bash
 python amc_parse.py your_database.amc --sqlite-db movies.sqlite
 ```
