@@ -1,69 +1,40 @@
-A hacky Python script for converting an Ant Movie Catalog 4.2 database (not tested with any other version) to an SQLite database.
-It is basically made to work with just IMDb imported data. If it works with custom and extras fields, I'm not complaining. If it works for you, good, but if not, hack away.
+A python script for parsing Ant Movie Catalog databases, that can also export to an SQLite database.
 
-Uses `sqlalchemy` and `tqdm`.
+Uses `sqlalchemy`:
+```bash
+pip install sqlalchemy
+```
 
-#### Basic Usage
+### Basic Usage
 This is basically a dry-run, it does not export anything:
 
 ```bash
-python amc2sqlite.py your_database.amc
+python amc_parse.py your_database.amc
 ```
 
-#### Extract Embedded Images
+### Extract Embedded Images
 
 ```bash
-python amc2sqlite.py your_database.amc --extract-images ./images/
+python amc_parse.py your_database.amc --extract-images ./images/
 ```
 
-#### Export to SQLite
+### Export to SQLite
 
 ```bash
-python amc2sqlite.py your_database.amc --sqlite-path movies.sqlite
+python amc_parse.py your_database.amc --sqlite-db movies.sqlite
 ```
 
-#### Debug Mode
+### Debug Mode
 
 ```bash
-python amc2sqlite.py your_database.amc --debug
+python amc_parse.py your_database.amc --debug 2
 ```
 
-#### Combined Options
+### Combined Options
 
 ```bash
-python amc2sqlite.py your_database.amc \
+python amc_parse.py your_database.amc \
     --extract-images ./images/ \
-    --sqlite-path movies.sqlite \
-    --debug
+    --sqlite-db movies.sqlite \
+    --debug 1
 ```
-
-#### Pattern-Based Detection
-
-The hacky part about this script. It uses pattern matching to locate movie records. The start (or what I perceive to be the start) of each movie record in an AMC database seems to follow a semi-consistent binary pattern:
-
-```
-.. .. 00 00 .. .. 00 00 .. .. 00 00 .. .. .. .. .. 00 00 00 .. .. .. .. .. .. 00 00 .. .. .. .. .. .. .. .. .. .. .. .. 00 00 00 00 01 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 .. 00 00 00
-```
-
-Where:
-- `..` = any byte (wildcard)
-- `00` = must be zero byte
-- `01` = must be 0x01 byte
-
-After honing the pattern down to that particular one, it found all the 2021 movies in my database with no overmatching.
-
-The script extracts from pattern offsets:
-
-- Movie ID: Bytes 0-1 (little-endian)
-- Date Added: Bytes 4-7 (Delphi TDateTime format)
-- Rating: Byte 16 (IMDB rating × 10)
-- Year: Bytes 20-21 (little-endian uint16)
-- Length: Bytes 24-25 (little-endian uint16)
-- Original Title Field Length: Byte 61
-
-and then starting at offset +65 from pattern start:
-
-- Original title (using the field length from before)
-- Translated title, director, producer, etc. (length-prefixed strings)
-- Embedded images (if present)
-- Custom field values, I hope
